@@ -1,0 +1,55 @@
+<!--
+ * @Description: 
+ * @Author: 鲁大师
+ * @Date: 2019-11-15 17:32:42
+ * @LastEditors: 鲁大师
+ * @LastEditTime: 2019-11-15 17:37:08
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .container {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        margin: 20px;
+        border: 10px solid red;
+        padding: 10px;
+        background: blue;
+      }
+      .inner {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        top: 0;
+        left: 0;
+        background: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      absolute 绝对定位，相对于 static 定位以外的第一个父元素进行定位。
+      <br />
+      relative 相对定位，相对于其自身正常位置进行定位。
+      <br />
+      fixed 固定定位，相对于浏览器窗口进行定位。
+      <br />
+      static 默认值。没有定位，元素出现在正常的流中。
+      <br />
+      inherit 规定应该从父元素继承 position 属性的值
+    </div>
+    <p>
+      但是要注意一个问题，absolute
+      是相对于父元素的哪个属性进行定位的？通过下面的例子我们来看一看。
+    </p>
+    <div class="container">
+      <div class="inner"></div>
+    </div>
+  </body>
+</html>

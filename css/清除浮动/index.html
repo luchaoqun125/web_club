@@ -3,17 +3,87 @@
  * @Author: 鲁大师
  * @Date: 2019-11-15 17:14:39
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-11-15 17:14:50
+ * @LastEditTime: 2019-11-15 17:27:44
  -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <main class="demo1">
+      清除浮动主要是为了防止父元素塌陷。清除浮动的方法有很多，常用的是 clearfix
+      伪类。
+      <style>
+        .demo1 .outer {
+          background: blue;
+        }
+
+        .demo1 .inner {
+          width: 100px;
+          height: 100px;
+          background: red;
+          float: left;
+        }
+
+        .demo1 .clearfix:after {
+          content: "";
+          display: block;
+          height: 0;
+          clear: both;
+          visibility: hidden;
+        }
+      </style>
+      <div class="outer clearfix">
+        <div class="inner">inner</div>
+      </div>
+    </main>
+
+    <main class="demo2">
+      方法二：额外加一个div，clear:both
+      <div class="container">
+        <div class="inner"></div>
+        <div class="clear"></div>
+      </div>
+      <style>
+        .demo2 .container {
+          background: blue;
+        }
+
+        .demo2 .inner {
+          width: 100px;
+          height: 100px;
+          background: red;
+          float: left;
+        }
+
+        .demo2 .clear {
+          clear: both;
+        }
+      </style>
+    </main>
+
+    <main class="demo3">
+      方法三：触发父盒子BFC，overflow:hidden
+      <div class="outer">
+        <div class="inner">inner</div>
+      </div>
+      <style>
+        .demo3 .outer {
+          background: blue;
+          overflow: hidden;
+        }
+        .demo3 .inner {
+          width: 100px;
+          height: 100px;
+          background: red;
+          float: left;
+        }
+      </style>
+    </main>
+  </body>
 </html>
