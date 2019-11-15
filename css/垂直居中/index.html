@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-11-15 16:28:39
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-11-15 16:33:03
+ * @LastEditTime: 2019-11-15 16:38:52
  -->
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +29,24 @@
 
   <main class="demo2">
       方法二： position + transform, inner宽高未知
+      <div class="outer">
+        <div class="inner">
+          子元素
+        </div>
+      </div>
+  </main>
+
+  <main class="demo3">
+      方法三：position + 负margin, inner宽高已知
+      <div class="outer">
+        <div class="inner">
+          子元素
+        </div>
+      </div>
+  </main>
+
+  <main class="demo4">
+      方法四：设置各个方向的距离都是0，再将margin设为auto，也可以实现，前提是inner宽高已知
       <div class="outer">
         <div class="inner">
           子元素

@@ -1,3 +1,11 @@
+.outer{
+  border: 1px solid red;
+  height: 150px;
+}
+.inner{
+  border: 1px solid blue;
+}
+
 .demo1 .outer{
   display: flex;
   justify-content: center;
@@ -12,4 +20,31 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
+}
+
+.demo3 .outer{
+  position: relative;
+}
+.demo3 .inner{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+}
+
+.demo4 .outer {
+  position: relative;
+}
+.demo4 .inner {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
 }

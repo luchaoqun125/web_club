@@ -1,0 +1,104 @@
+<!--
+ * @Description: 
+ * @Author: 鲁大师
+ * @Date: 2019-11-15 16:50:29
+ * @LastEditors: 鲁大师
+ * @LastEditTime: 2019-11-15 17:12:02
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .demo1 .container{
+      display: flex;
+    }
+    .demo1 .left{
+      flex-basis:200px;
+      background: green;
+    }
+    .demo1 .main{
+        flex: 1;
+        background: red;
+    }
+    .demo1 .right{
+        flex-basis:200px;
+        background: green;
+    }
+
+    .demo2{
+      position: relative;
+    }
+
+    .demo2 .left,.demo2 .right{
+      position: absolute;
+      top: 0;
+      background: red;
+    }
+    .demo2 .left{
+        left: 0;
+        width: 200px;
+    }
+    .demo2 .right{
+        right: 0;
+        width: 200px;
+    }
+    .demo2 .main{
+        margin: 0 200px ;
+        background: green;
+    }
+  </style>
+</head>
+<body>
+  <main class="demo1">
+    第一种：flex
+    <div class="container">
+        <div class="left">left</div>
+        <div class="main">main</div>
+        <div class="right">right</div>
+    </div>
+  </main>
+
+  <p>
+      第二种：position + margin
+  </p>
+  <main class="demo2">
+    <div class="container">
+        <div class="left">left</div>
+        <div class="main">main</div>
+        <div class="right">right</div>
+    </div>
+  </main>
+
+  <p>
+    第三种：float + margin
+  </p>
+  <main class="demo3">
+    <style>
+      .demo3 .left{
+          float:left;
+          width:200px;
+          background:red;
+      }
+      .demo3 .main{
+          margin:0 200px;
+          background: green;
+      }
+      .demo3 .right{
+          float:right;
+          width:200px;
+          background:red;
+      }
+    </style>
+    <div class="container">
+        <div class="left">left</div>
+        <div class="right">right</div>
+        <div class="main">main</div>
+    </div>
+  </main>
+
+</body>
+</html>
