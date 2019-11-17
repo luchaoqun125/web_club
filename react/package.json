@@ -1,0 +1,17 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "学习webpack知识和react面试题",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./scripts/start.js",
+    "build": "node ./scripts/build.js"
+  },
+  "author": "鲁大师",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
