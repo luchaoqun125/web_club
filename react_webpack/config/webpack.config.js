@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-11-16 17:15:01
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-11-17 22:14:52
+ * @LastEditTime: 2019-11-17 22:50:31
  */
 const path = require('path')
 const pathConfig = require('./paths')
@@ -20,10 +20,28 @@ function webpackConfig(options) {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'webpack配置react'
+        title: 'webpack配置react',
+        template: path.resolve(__dirname, "../public/index.html")
       }),
       new CleanWebpackPlugin(),
-    ]
+    ],
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          include: path.resolve(__dirname, "../src"),
+          use: [
+            {
+              loader: "babel-loader",
+              options: {
+                  presets: ['@babel/preset-react'],
+                  plugins: ["react-hot-loader/babel"]
+              }
+            }
+          ]
+        }
+      ]
+    }
   }
 }
 
