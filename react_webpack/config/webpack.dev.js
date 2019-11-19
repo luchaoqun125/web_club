@@ -3,15 +3,15 @@
  * @Author: 鲁大师
  * @Date: 2019-11-17 18:07:39
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-11-17 22:50:55
+ * @LastEditTime: 2019-11-18 18:55:05
  */
-const path = require('path')
 const webpackConfig = require('./webpack.config')
 const webpackMerge = require('webpack-merge')
+const pathsConfig = require('./paths')
 
 const devConfig = {
   devServer: {
-    contentBase: path.resolve(__dirname, '../dist'),
+    contentBase: pathsConfig.dist,
     hot: true
     // compress: true,
     // port: 9999,
