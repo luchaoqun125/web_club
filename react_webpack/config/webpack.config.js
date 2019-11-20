@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-11-16 17:15:01
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-11-20 10:02:47
+ * @LastEditTime: 2019-11-20 10:20:27
  */
 const pathConfig = require('./paths')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -16,13 +16,14 @@ const handler = (percentage, message, ...args) => {
 };
 
 function webpackConfig(options) {
+  const isProduction = options.mode === 'production' ? true: false
+  
   return {
     mode: options.mode,
     entry: pathConfig.webpackEntry,
     output: {
       filename: options.output.filename,
       path: pathConfig.dist,
-      publicPath: "/"
     },
     plugins: [
       new HtmlWebpackPlugin({
