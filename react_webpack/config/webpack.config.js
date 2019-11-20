@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-11-16 17:15:01
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-11-20 09:31:41
+ * @LastEditTime: 2019-11-20 10:02:47
  */
 const pathConfig = require('./paths')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -20,8 +20,9 @@ function webpackConfig(options) {
     mode: options.mode,
     entry: pathConfig.webpackEntry,
     output: {
-      filename: 'js/[name][hash].js',
+      filename: options.output.filename,
       path: pathConfig.dist,
+      publicPath: "/"
     },
     plugins: [
       new HtmlWebpackPlugin({
