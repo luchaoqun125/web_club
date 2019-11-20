@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-11-19 14:25:57
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-11-19 17:58:02
+ * @LastEditTime: 2019-11-20 14:04:36
  */
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
