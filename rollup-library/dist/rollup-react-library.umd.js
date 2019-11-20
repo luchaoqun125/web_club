@@ -1,0 +1,1 @@
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e=e||self)["rollup-react-library"]={})}(this,(function(e){"use strict";e.foo=function(){return"xixni"},Object.defineProperty(e,"__esModule",{value:!0})}));
