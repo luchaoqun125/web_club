@@ -3,19 +3,24 @@
  * @Author: 鲁大师
  * @Date: 2019-11-16 17:15:01
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-11-19 10:22:53
+ * @LastEditTime: 2019-11-19 22:51:07
  */
 const pathConfig = require('./paths')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack')
+
+const handler = (percentage, message, ...args) => {
+  console.info(percentage, message, ...args);
+};
 
 function webpackConfig(options) {
   return {
     mode: options.mode,
     entry: pathConfig.webpackEntry,
     output: {
-      filename: 'js/bundle.js',
+      filename: 'js/[name][hash].js',
       path: pathConfig.dist,
     },
     plugins: [
@@ -27,6 +32,7 @@ function webpackConfig(options) {
       new ExtractTextPlugin({
         filename: "css/[name][hash].css"
       }),
+      new webpack.ProgressPlugin(handler)
     ],
     module: {
       rules: [
@@ -74,19 +80,12 @@ function webpackConfig(options) {
           })
         },
         {
-          test: /\.css$/,
+          test: /\.(css|less)$/,
           exclude: pathConfig.src,
-          use: [
-            // {
-            //   loader: 'style-loader/url',
-            // },
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'css/[name].css'
-              }
-            }
-          ]
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader', 'less-loader']
+          })
         },
         {
           test: /\.(jpg|png|jpeg|svg|gif)$/,
@@ -105,6 +104,13 @@ function webpackConfig(options) {
           use: ['file-loader']
         }
       ]
+    },
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        minSize: 50000,
+        minChunks: 1,
+      }
     }
   }
 }
