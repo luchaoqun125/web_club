@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-11-16 17:15:01
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-11-19 22:51:07
+ * @LastEditTime: 2019-11-20 09:31:41
  */
 const pathConfig = require('./paths')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -60,7 +60,7 @@ function webpackConfig(options) {
                 options: {
                   modules: {
                       mode: "local",
-                      localIdentName: '[path][name]_[local]_[hash:base64:5]'
+                      localIdentName: '[path][name]-[local]-[hash:base64:5]'
                   },
                   localsConvention: 'camelCase'
                 }
@@ -94,7 +94,7 @@ function webpackConfig(options) {
               loader: 'url-loader',
               options: {
                 limit: 1024 * 10,
-                name: 'images/[name]_[hash].[ext]'
+                name: 'images/[name]-[hash].[ext]'
               }
             }
           ]
