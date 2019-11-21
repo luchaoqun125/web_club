@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-11-16 17:15:01
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-11-20 10:20:27
+ * @LastEditTime: 2019-11-21 14:18:52
  */
 const pathConfig = require('./paths')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -20,22 +20,34 @@ function webpackConfig(options) {
   
   return {
     mode: options.mode,
-    entry: pathConfig.webpackEntry,
+    entry: {
+      main: pathConfig.webpackEntry,
+      vendor: [
+        'react',
+        'antd'
+      ]
+    },
     output: {
       filename: options.output.filename,
       path: pathConfig.dist,
     },
     plugins: [
+      // html模板
       new HtmlWebpackPlugin({
         title: 'webpack配置react',
         template: pathConfig.publicIndex
       }),
+      // 清除dist
       new CleanWebpackPlugin(),
+      // 剥离css从js
       new ExtractTextPlugin({
         filename: "css/[name][hash].css"
       }),
-      new webpack.ProgressPlugin(handler)
-    ],
+      // 进程构建进度
+      new webpack.ProgressPlugin(handler),
+      // 热更新模块
+      !isProduction && new webpack.HotModuleReplacementPlugin(),
+    ].filter(Boolean),
     module: {
       rules: [
         {
@@ -112,7 +124,7 @@ function webpackConfig(options) {
         chunks: 'all',
         minSize: 50000,
         minChunks: 1,
-      }
+      },
     }
   }
 }

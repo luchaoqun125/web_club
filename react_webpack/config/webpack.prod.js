@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-11-17 18:03:06
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-11-20 10:00:52
+ * @LastEditTime: 2019-11-21 09:50:57
  */
 const webpackConfig = require('./webpack.config')
 const webpackMerge = require('webpack-merge')
@@ -19,7 +19,7 @@ const prodConfig = {
     }),
     new ManifestPlugin(),
   ],
-  devtool: "source-map",
+  // devtool: "source-map",
 }
 
 const options = {
