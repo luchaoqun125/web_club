@@ -14,4 +14,10 @@
 
 ![Image text](../imgs/xunhuan.png)
 
+### 定时器
+- 它是由定时器线程控制，因为JavaScript引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确，因此很有必要单独开一个线程用来计时
+- 当使用setTimeout或setInterval时，它需要定时器线程计时，计时完成后就会将特定的事件推入事件队列中。
 
+> 注意：W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms。
+
+### 事件循环进阶：macrotask与microtask

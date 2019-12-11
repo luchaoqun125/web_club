@@ -1,11 +1,11 @@
 {
-  "name": "rollup-react-library",
-  "version": "1.0.0",
-  "main": "dist/rollup-react-library.cjs.js",
-  "module": "dist/rollup-react-library.esm.js",
-  "browser": "dist/rollup-react-library.umd.js",
+  "name": "web-worker-lib",
+  "version": "1.0.1",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.js",
   "dependencies": {
-    "react": "^16.12.0"
+    "lz-string": "1.4.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
@@ -22,13 +22,15 @@
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-node-resolve": "^5.1.0",
-    "rollup-plugin-terser": "^5.1.2"
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-web-worker-loader": "^0.8.1"
   },
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "test": "node test/test.js",
-    "pretest": "npm run build"
+    "pretest": "npm run build",
+    "postpublish": "npm run build"
   },
   "files": [
     "dist"
