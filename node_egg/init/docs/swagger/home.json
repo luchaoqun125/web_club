@@ -1,0 +1,36 @@
+{
+  "/": {
+    "post": {
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "definitions/home.json#Home"
+          }
+        }
+      ],
+      "response": {
+        "type": "object",
+        "schema": {
+          "$ref": "definitions/home.json#Home"
+        }
+      }
+    }
+  },
+  "/getName": {
+    "get": {
+      "parameters":[{
+        "name": "query",
+        "in": "query"
+      }],
+      "response": {
+        "type": "object",
+        "schema": {
+          "$ref": "definitions/home.json#Home"
+        }
+      }
+    }
+  }
+}
