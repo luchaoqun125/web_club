@@ -14,7 +14,9 @@ import 'egg-schedule';
 import 'egg-static';
 import 'egg-jsonp';
 import 'egg-view';
+import 'egg-mysql';
 import 'egg-swagger';
+import 'egg-validate';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -30,6 +32,8 @@ declare module 'egg' {
     static?: EggPluginItem;
     jsonp?: EggPluginItem;
     view?: EggPluginItem;
+    mysql?: EggPluginItem;
     swagger?: EggPluginItem;
+    validate?: EggPluginItem;
   }
 }

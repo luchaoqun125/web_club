@@ -31,3 +31,16 @@ $ npm start
 
 - Node.js 8.x
 - Typescript 2.8+
+
+
+
+### 知识记录
+控制台输入 lsof -i tcp:port 
+
+port对应端口号。如8080
+
+可以查看该端口被什么程序占用，并显示PID，
+
+如果要杀死进程直接执行 kill 命令
+
+kill PID

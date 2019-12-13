@@ -26,7 +26,8 @@
     "egg-mysql": "^3.0.0",
     "egg-scripts": "^2.6.0",
     "egg-shell-decorators": "^1.0.7",
-    "egg-swagger": "^1.1.2"
+    "egg-swagger": "^1.1.2",
+    "egg-validate": "^2.0.2"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",

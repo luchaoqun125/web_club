@@ -3,10 +3,10 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-12-12 10:18:07
+ * @LastEditTime: 2019-12-13 17:28:44
  */
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
-import * as path from 'path'
+import * as path from 'path';
 
 export default (appInfo: EggAppInfo) => {
   const config = {} as PowerPartial<EggAppConfig>;
@@ -43,35 +43,16 @@ export default (appInfo: EggAppInfo) => {
       swaggerFilePath: '/docs/swagger.json',
       enableGoogleFont: false,
     },
-    
+
     // https://github.com/eggjs/egg-security
-    security: {
-      xframe: {
-        enable: false,
-      },
+    security: {},
+
+    // 上传的文件
+    multipart: {
+      mode: 'file',
     },
 
-    // https://github.com/eggjs/egg-mysql
-    // mysql: {
-    //   // database configuration
-    //   client: {
-    //     // host
-    //     host: 'mysql.com',
-    //     // port
-    //     port: '3306',
-    //     // username
-    //     user: 'test_user',
-    //     // password
-    //     password: 'test_password',
-    //     // database
-    //     database: 'test',
-    //   },
-    //   // load into app, default is open
-    //   app: true,
-    //   // load into agent, default is close
-    //   agent: false,
-    // }
-  }
+  };
 
   // the return config will combines to EggAppConfig
   return {
