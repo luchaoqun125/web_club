@@ -3,32 +3,25 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-12-13 17:27:18
+ * @LastEditTime: 2019-12-16 14:08:21
  */
 import { EggAppConfig, PowerPartial } from 'egg';
 
 export default () => {
   const config: PowerPartial<EggAppConfig> = {
 
-    // https://github.com/eggjs/egg-mysql
-    mysql: {
-      // database configuration
-      client: {
-        // host
-        host: 'localhost',
-        // port
-        port: '3306',
-        // username
-        user: 'root',
-        // password
-        password: '12QWqw..',
-        // database
-        database: 'eggtest',
-      },
-      // load into app, default is open
-      app: true,
-      // load into agent, default is close
-      agent: false,
+    // https://github.com/eggjs/egg-sequelize
+    sequelize : {
+      dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
+      database: 'eggtest',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: '12QWqw..',
+      // delegate: 'myModel', // load all models to `app[delegate]` and `ctx[delegate]`, default to `model`
+      // baseDir: 'my_model', // load all files in `app/${baseDir}` as models, default to `model`
+      // exclude: 'index.js', // ignore `app/${baseDir}/index.js` when load models, support glob and array
+      // more sequelize options
     },
 
     // https://github.com/eggjs/egg-security

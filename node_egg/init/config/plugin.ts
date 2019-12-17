@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-12-13 15:57:01
+ * @LastEditTime: 2019-12-16 14:08:34
  */
 import { EggPlugin } from 'egg';
 
@@ -14,10 +14,10 @@ const plugin: EggPlugin = {
   //   package: 'egg-view-nunjucks',
   // },
 
-  // https://github.com/eggjs/egg-mysql
-  mysql: {
+  // https://github.com/eggjs/egg-sequelize
+  sequelize: {
     enable: true,
-    package: 'egg-mysql',
+    package: 'egg-sequelize',
   },
 
   // https://github.com/TheOne1006/egg-swagger

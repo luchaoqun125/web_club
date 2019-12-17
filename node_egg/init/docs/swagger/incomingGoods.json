@@ -1,0 +1,20 @@
+{
+  "/create": {
+    "post": {
+      "parameters": {
+        "name": "body",
+        "in": "body",
+        "required": true,
+        "schema": {
+          "$ref": "definitions/incomingGoods.json#IncomingGoods"
+        }
+      },
+      "response": {
+        "type": "object",
+        "schema": {
+          "$ref": "definitions/incomingGoods.json#IncomingGoods"
+        }
+      }
+    }
+  }
+}
