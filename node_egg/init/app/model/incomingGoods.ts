@@ -2,7 +2,6 @@ export default app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
   const IncomingGoods = app.model.define('incoming_goods', {
-
     incoming_id: INTEGER,
     supply_company: STRING(100),
     in_person: STRING(100),

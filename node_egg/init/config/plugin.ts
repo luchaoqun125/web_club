@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-12-16 14:08:34
+ * @LastEditTime: 2019-12-18 10:38:06
  */
 import { EggPlugin } from 'egg';
 
@@ -30,6 +30,11 @@ const plugin: EggPlugin = {
   validate: {
     enable: true,
     package: 'egg-validate',
+  },
+
+  jwt: {
+    enable: true,
+    package: 'egg-jwt',
   },
 
 };

@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-12-16 14:08:21
+ * @LastEditTime: 2019-12-17 17:59:36
  */
 import { EggAppConfig, PowerPartial } from 'egg';
 
@@ -35,6 +35,7 @@ export default () => {
       },
       domainWhiteList: [ 'http://localhost:7001', 'http://127.0.0.1:7001' ],
     },
+
     // jsonp: {
     //   csrf: true,
     //   whiteList: [ 'http://127.0.0.1:7001' ],

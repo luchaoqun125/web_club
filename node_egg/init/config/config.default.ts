@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors: 鲁大师
- * @LastEditTime: 2019-12-13 17:28:44
+ * @LastEditTime: 2019-12-17 17:59:20
  */
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
 import * as path from 'path';
@@ -43,9 +43,6 @@ export default (appInfo: EggAppInfo) => {
       swaggerFilePath: '/docs/swagger.json',
       enableGoogleFont: false,
     },
-
-    // https://github.com/eggjs/egg-security
-    security: {},
 
     // 上传的文件
     multipart: {
