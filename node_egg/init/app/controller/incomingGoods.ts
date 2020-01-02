@@ -30,4 +30,10 @@ export default class IncomingGoodsController extends Controller {
     return await this.incomingGoodsService.list(body);
   }
 
+  @Post('/update')
+  @Description('更新入库状态')
+  async update({ body }) {
+    return await this.incomingGoodsService.update(body);
+  }
+
 }

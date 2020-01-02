@@ -2,24 +2,24 @@
  * @Description: IncomingGoodsService Service
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
- * @LastEditors: 鲁大师
- * @LastEditTime: 2019-12-18 10:54:05
+ * @LastEditors  : 鲁大师
+ * @LastEditTime : 2019-12-29 16:37:54
  */
 import { Service } from 'egg';
 
 export default class IncomingGoodsService extends Service {
-  IncomingGoodsModel: any;
+  incomingGoodsModel: any;
 
   constructor(ctx) {
     super(ctx);
-    this.IncomingGoodsModel = this.ctx.model.IncomingGoods;
+    this.incomingGoodsModel = this.ctx.model.IncomingGoods;
   }
   /**
-   * sayHi to you
-   * @param name - your name
+   * 创建入库商品
+   * @param {}
    */
   public async create(params) {
-    const result = await this.IncomingGoodsModel.create(params);
+    const result = await this.incomingGoodsModel.create(params);
     return result;
   }
 
@@ -27,11 +27,23 @@ export default class IncomingGoodsService extends Service {
    * 查询入库列表
    */
   public async list() {
-    return await this.IncomingGoodsModel.Post.findAll({
+    return await this.incomingGoodsModel.Post.findAll({
       attributes: [ 'id' ],
-      include: { model: this.IncomingGoodsModel },
+      include: { model: this.incomingGoodsModel },
       where: { status: 'publish' },
       order: 'id desc',
     });
   }
+  /**
+   * 更新表格
+   */
+  public async update() {
+    return await this.incomingGoodsModel.Post.findAll({
+      attributes: [ 'id' ],
+      include: { model: this.incomingGoodsModel },
+      where: { status: 'publish' },
+      order: 'id desc',
+    });
+  }
+
 }

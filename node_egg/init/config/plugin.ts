@@ -2,8 +2,8 @@
  * @Description: 插件配置
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
- * @LastEditors: 鲁大师
- * @LastEditTime: 2019-12-18 10:38:06
+ * @LastEditors  : 鲁大师
+ * @LastEditTime : 2019-12-28 22:08:19
  */
 import { EggPlugin } from 'egg';
 
@@ -32,10 +32,17 @@ const plugin: EggPlugin = {
     package: 'egg-validate',
   },
 
+  // 稍后处理
   jwt: {
     enable: true,
     package: 'egg-jwt',
   },
+
+  // 稍后处理
+  // redis: {
+  //   enable: true,
+  //   package: 'egg-redis',
+  // },
 
 };
 
