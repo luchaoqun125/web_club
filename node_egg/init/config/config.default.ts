@@ -2,8 +2,8 @@
  * @Description: 默认配置，线上和本地的配置信息
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
- * @LastEditors: 鲁大师
- * @LastEditTime: 2019-12-17 17:59:20
+ * @LastEditors  : 鲁大师
+ * @LastEditTime : 2020-01-07 16:47:36
  */
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
 import * as path from 'path';
@@ -47,6 +47,13 @@ export default (appInfo: EggAppInfo) => {
     // 上传的文件
     multipart: {
       mode: 'file',
+    },
+
+    // 校验入参 https://github.com/node-modules/parameter
+    validate: {
+      //
+      convert: true, // 将原始参数转换为特定类型
+      widelyUndefined: true,
     },
 
   };

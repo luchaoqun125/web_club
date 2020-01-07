@@ -2,8 +2,8 @@
  * @Description: 入口文件配置
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
- * @LastEditors: 鲁大师
- * @LastEditTime: 2019-12-11 20:35:22
+ * @LastEditors  : 鲁大师
+ * @LastEditTime : 2020-01-07 17:14:06
  */
 import { Application } from 'egg';
 import { EggShell } from 'egg-shell-decorators';
@@ -22,7 +22,7 @@ export default (app: Application) => {
       version: '1.0.0', // 对应 swagger-ui 的 version
       host: '127.0.0.1', // 对应 swagger-ui 的 host
       port: 7001, // 如有填的话 host += ':' port
-      schemes: [ 'http' ],
+      schemes: [ 'http', 'https' ],
       paths: {
         outPath: '/docs/swagger.json', // 输出 swagger-ui 文档json的文件路径
         definitionPath: '/docs/definitions', // definitions 模型的路径（下面会有讲解）

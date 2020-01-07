@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-29 15:43:50
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2019-12-29 15:47:57
+ * @LastEditTime : 2020-01-07 17:18:48
  */
 import { Service } from 'egg';
 
@@ -19,6 +19,7 @@ export default class SaleGoodsService extends Service {
    * @param params Object
    */
   async create(params) {
+    console.log(params);
     return {};
   }
 
@@ -27,6 +28,7 @@ export default class SaleGoodsService extends Service {
    * @param params Object
    */
   async list(params) {
+    console.log(params);
     return {};
   }
 
