@@ -2,8 +2,8 @@
  * @Description: 开发的配置文件
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
- * @LastEditors: 鲁大师
- * @LastEditTime: 2019-12-17 17:59:36
+ * @LastEditors  : 鲁大师
+ * @LastEditTime : 2020-01-10 11:17:13
  */
 import { EggAppConfig, PowerPartial } from 'egg';
 
@@ -18,10 +18,23 @@ export default () => {
       port: 3306,
       username: 'root',
       password: '12QWqw..',
-      // delegate: 'myModel', // load all models to `app[delegate]` and `ctx[delegate]`, default to `model`
-      // baseDir: 'my_model', // load all files in `app/${baseDir}` as models, default to `model`
-      // exclude: 'index.js', // ignore `app/${baseDir}/index.js` when load models, support glob and array
-      // more sequelize options
+      timezone: '+08:00',
+      define: {             // model的全局配置
+        charset: 'utf8',
+        timestamps: true,   // 添加create,update,delete时间戳
+        paranoid: true,     // 添加软删除
+        freezeTableName: true,  // 防止修改表名为复数
+        underscored: false,     // 防止驼峰式字段被默认转为下划线
+      },
+      dialectOptions: {
+        dateStrings: true,
+        typeCast(field, next) {
+          if (field.type === 'DATETIME') {
+            return field.string();
+          }
+          return next();
+        },
+      },
     },
 
     // https://github.com/eggjs/egg-security

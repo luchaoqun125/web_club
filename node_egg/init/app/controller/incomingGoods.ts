@@ -3,11 +3,11 @@
  * @Author: 鲁大师
  * @Date: 2019-12-16 18:53:56
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-07 17:17:33
+ * @LastEditTime : 2020-01-09 20:51:44
  */
 import { Controller } from 'egg';
 import { Post, TagsAll, Description, Prefix } from 'egg-shell-decorators';
-
+import { createRule } from '../rule/incomingGoods';
 @TagsAll('入库')
 @Prefix('/incoming/goods')
 export default class IncomingGoodsController extends Controller {
@@ -23,7 +23,11 @@ export default class IncomingGoodsController extends Controller {
   @Post('/create')
   @Description('创建入库')
   async create({ body }) {
-    // this.validate();
+    try {
+      this.validate(createRule, body);
+    } catch (error) {
+      return error;
+    }
     return await this.incomingGoodsService.create(body);
   }
 

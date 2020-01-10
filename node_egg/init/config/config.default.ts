@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-07 16:47:36
+ * @LastEditTime : 2020-01-08 10:46:22
  */
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
 import * as path from 'path';
@@ -51,9 +51,8 @@ export default (appInfo: EggAppInfo) => {
 
     // 校验入参 https://github.com/node-modules/parameter
     validate: {
-      //
       convert: true, // 将原始参数转换为特定类型
-      widelyUndefined: true,
+      // widelyUndefined: true,
     },
 
   };

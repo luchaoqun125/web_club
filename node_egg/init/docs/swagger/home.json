@@ -11,7 +11,7 @@
           }
         }
       ],
-      "response": {
+      "responses": {
         "type": "object",
         "schema": {
           "$ref": "definitions/home.json#Home"
@@ -25,7 +25,7 @@
         "name": "query",
         "in": "query"
       }],
-      "response": {
+      "responses": {
         "type": "object",
         "schema": {
           "$ref": "definitions/home.json#Home"

@@ -23,6 +23,14 @@ $ npm start
 
 
 知识笔记
+### MsSql命令，homebrew
+  # 启动 mysql, 并设置为开机启动
+  brew services start mysql
+  # 关闭 mysql
+  brew services stop mysql
+  # 重启 mysql
+  brew services restart mysql
+
 ### 知识记录
 控制台输入 lsof -i tcp:port 
 port对应端口号。如8080
@@ -34,3 +42,17 @@ kill PID
   "docker": "egg-sequelize db:migrate && egg-scripts start"
 
 ### ？redis 配置
+
+
+
+<!-- 
+一个主账号，
+主账号可以开分账号进行管理
+ -->
+
+我的疑惑：
+手机直播怎么实现
+手机怎么进行通话，怎么实现
+
+ 店铺拆分：
+ 资源走cdn

@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2019-12-29 16:37:54
+ * @LastEditTime : 2020-01-08 21:53:04
  */
 import { Service } from 'egg';
 
@@ -19,7 +19,13 @@ export default class IncomingGoodsService extends Service {
    * @param {}
    */
   public async create(params) {
-    const result = await this.incomingGoodsModel.create(params);
+    let result = null;
+    const { logger } = this.ctx;
+    try {
+      result = await this.incomingGoodsModel.create(params);
+    } catch (error) {
+      logger.error(error);
+    }
     return result;
   }
 

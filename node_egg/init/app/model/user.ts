@@ -3,16 +3,21 @@
  * @Author: 鲁大师
  * @Date: 2019-12-28 21:40:44
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2019-12-29 16:30:04
+ * @LastEditTime : 2020-01-10 11:35:32
  */
 export default app => {
   const { STRING } = app.Sequelize;
 
-  const UserModel = app.model.define('user', {
+  const User = app.model.define('user', {
     // 用户名
     name: STRING(20),
     // 密码
     password: STRING(20),
   });
-  return UserModel;
+
+  User.associate = () => {
+    User.hasMany(app.model.Home);
+  };
+
+  return User;
 };
