@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-12 21:50:27
+ * @LastEditTime : 2020-01-13 14:40:06
  */
 import { Service } from 'egg';
 
@@ -31,7 +31,7 @@ export default class IncomingGoodsService extends Service {
         }],
       });
 
-      // 存储进货表
+      // 更新库存表
     } catch (error) {
       return helper.error(this.ctx, error, '报存失败');
     }
@@ -45,7 +45,7 @@ export default class IncomingGoodsService extends Service {
     const { offset, limit, query } = this.ctx.state.pagination;
 
     try {
-      const result = await this.incomingGoodsModel.Post.findAndCountAll({
+      const result = await this.incomingGoodsModel.findAndCountAll({
         include: { model: this.incomingGoodsListModel },
         where: query,
         limit,

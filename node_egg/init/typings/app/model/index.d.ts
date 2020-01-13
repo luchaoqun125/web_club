@@ -2,6 +2,7 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
+import ExportGoods from '../../../app/model/goods';
 import ExportHome from '../../../app/model/home';
 import ExportHomeList from '../../../app/model/homeList';
 import ExportIncomingGoods from '../../../app/model/incomingGoods';
@@ -13,6 +14,7 @@ import ExportUser from '../../../app/model/user';
 
 declare module 'egg' {
   interface IModel {
+    Goods: ReturnType<typeof ExportGoods>;
     Home: ReturnType<typeof ExportHome>;
     HomeList: ReturnType<typeof ExportHomeList>;
     IncomingGoods: ReturnType<typeof ExportIncomingGoods>;
