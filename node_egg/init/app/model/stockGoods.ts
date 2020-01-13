@@ -1,17 +1,19 @@
 /*
- * @Description: 进货商品列表
+ * @Description: 库存表结构
  * @Author: 鲁大师
- * @Date: 2020-01-09 10:23:56
+ * @Date: 2020-01-12 20:58:52
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-11 16:49:30
+ * @LastEditTime : 2020-01-12 21:08:22
  */
 export default app => {
   const { INTEGER, STRING, FLOAT } = app.Sequelize;
 
-  const IncomingGoodsList = app.model.define('incoming_goods_list', {
+  const StockGoodsModel = app.model.define('stock_goods', {
     // 商品列表
     // 进货ID
     incomingGoodsId: INTEGER,
+    // 商品ID
+    goodsId: INTEGER,
     // 入库仓号
     house: INTEGER,
     // 商品名称
@@ -30,11 +32,5 @@ export default app => {
     money: FLOAT,
   });
 
-  IncomingGoodsList.associate = () => {
-    IncomingGoodsList.belongsTo(app.model.IncomingGoods, {
-      foreignKey: 'incomingGoodsId',
-    });
-  };
-
-  return IncomingGoodsList;
+  return StockGoodsModel;
 };

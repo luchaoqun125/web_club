@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-08 10:46:22
+ * @LastEditTime : 2020-01-11 14:06:46
  */
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
 import * as path from 'path';
@@ -16,7 +16,12 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1576052086807_5902';
 
   // add your egg config in here
-  config.middleware = [ 'swagger' ];
+  config.middleware = [ 'swagger', 'errorHandler', 'pagination' ];
+
+  // // 只对前缀的url路径生效
+  // config.errorHandler = {
+  //   match: '/api',
+  // };
 
   // add your special config in here
   const bizConfig = {
@@ -53,6 +58,22 @@ export default (appInfo: EggAppInfo) => {
     validate: {
       convert: true, // 将原始参数转换为特定类型
       // widelyUndefined: true,
+    },
+
+    // https://github.com/eggjs/egg-security
+    security: {
+      // 关闭 csrf
+      csrf: {
+        enable: false,
+      },
+      // 跨域白名单
+      domainWhiteList: [ 'http://127.0.0.1:7001' ],
+    },
+
+    // 允许跨域的方法
+    cors: {
+      origin: '*',
+      allowMethods: 'GET, PUT, POST, DELETE, PATCH',
     },
 
   };

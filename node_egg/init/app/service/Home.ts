@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-10 11:31:52
+ * @LastEditTime : 2020-01-11 14:22:59
  */
 import { Service } from 'egg';
 
@@ -41,12 +41,13 @@ export default class HomeService extends Service {
   /**
    * @return， 查询列表
    */
-  async list(params) {
-    const { pageSize, current, ...query } = params;
+  async list() {
+    const { offset, limit, query } = this.ctx.state.pagination;
+
     const selectData = {
       where: query,
-      limit: Number(pageSize) || 20,
-      offset: (current - 1) * pageSize,
+      limit,
+      offset,
       include: [
         {
           model: this.homeListModel,
@@ -55,23 +56,14 @@ export default class HomeService extends Service {
       ],
     };
 
-    let list: any, total: any;
+    let list = [];
     try {
-      list = await this.homeModel.findAll(selectData) || [];
-      total = (await this.homeModel.findAll({ where: query, include: [
-        {
-          model: this.homeListModel,
-          as: 'children',
-        },
-      ]})).length;
+      list = await this.homeModel.findAndCountAll(selectData);
     } catch (error) {
-      this.logger.error(error);
+      return this.ctx.helper.error(this.ctx, error, '参数异常');
     }
 
-    return {
-      list,
-      total,
-    };
+    return this.ctx.helper.success(this.ctx, list);
   }
   /**
    * sayHi to you

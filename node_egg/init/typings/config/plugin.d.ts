@@ -18,6 +18,7 @@ import 'egg-sequelize';
 import 'egg-swagger';
 import 'egg-validate';
 import 'egg-jwt';
+import 'egg-cors';
 import { EggPluginItem } from 'egg';
 declare module 'egg' {
   interface EggPlugin {
@@ -37,5 +38,6 @@ declare module 'egg' {
     swagger?: EggPluginItem;
     validate?: EggPluginItem;
     jwt?: EggPluginItem;
+    cors?: EggPluginItem;
   }
 }

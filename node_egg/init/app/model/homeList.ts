@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2020-01-09 10:48:59
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-10 10:32:42
+ * @LastEditTime : 2020-01-11 13:50:14
  */
 export default app => {
   const { STRING, INTEGER } = app.Sequelize;
@@ -12,7 +12,7 @@ export default app => {
     name: STRING,
     sex: INTEGER,
     age: INTEGER,
-    // homeId: INTEGER,
+    homeId: INTEGER,
   });
 
   HomeList.associate = () => {

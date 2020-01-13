@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-08 17:16:39
+ * @LastEditTime : 2020-01-11 14:25:03
  */
 import { Controller } from 'egg';
 import { Post, TagsAll, Get, Description, Prefix } from 'egg-shell-decorators';
@@ -32,17 +32,17 @@ export default class HomeController extends Controller {
     return result;
   }
 
-  @Post('/list')
+  @Get('/list')
   @Description('获取所有列表')
-  async list({ body }) {
-    return await this.homeService.list(body);
+  async list() {
+    return await this.homeService.list();
   }
 
   @Get('/getName')
   @Description('获取name')
   async getName() {
     const { ctx } = this;
-    ctx.body = await this.homeService.getName('egg');
-    return 'hi, egg';
+    const data = await this.homeService.getName('egg');
+    return ctx.helper.success(ctx, data);
   }
 }

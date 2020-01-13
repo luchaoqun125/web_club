@@ -3,19 +3,21 @@
  * @Author: 鲁大师
  * @Date: 2020-01-09 10:23:56
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-11 16:49:30
+ * @LastEditTime : 2020-01-12 21:14:57
  */
 export default app => {
   const { INTEGER, STRING, FLOAT } = app.Sequelize;
 
-  const IncomingGoodsList = app.model.define('incoming_goods_list', {
+  const SaleGoodsList = app.model.define('sale_goods_list', {
     // 商品列表
-    // 进货ID
+    // 出货订单ID
+    saleGoodsId: INTEGER,
+    // 进货订单号
     incomingGoodsId: INTEGER,
-    // 入库仓号
+    // 商品id
+    goodsId: INTEGER,
+    // 销售仓库
     house: INTEGER,
-    // 商品名称
-    goodsName: STRING(100),
     // 生产日期
     manufactureDate: STRING(100),
     // 到期时间
@@ -30,11 +32,11 @@ export default app => {
     money: FLOAT,
   });
 
-  IncomingGoodsList.associate = () => {
-    IncomingGoodsList.belongsTo(app.model.IncomingGoods, {
-      foreignKey: 'incomingGoodsId',
+  SaleGoodsList.associate = () => {
+    SaleGoodsList.belongsTo(app.model.SaleGoods, {
+      foreignKey: 'saleGoodsId',
     });
   };
 
-  return IncomingGoodsList;
+  return SaleGoodsList;
 };

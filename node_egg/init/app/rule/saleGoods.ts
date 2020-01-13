@@ -1,30 +1,29 @@
 /*
- * @Description: 进货商品
+ * @Description: 销售的校验
  * @Author: 鲁大师
- * @Date: 2020-01-08 20:04:07
+ * @Date: 2020-01-11 16:45:10
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-11 15:01:57
+ * @LastEditTime : 2020-01-11 16:47:35
  */
 import { baseGoods } from './baseGoods';
-
 export const createRule = {
-  supplyCompany: {
+  purchaseCompany: {
     type: 'string',
     allowEmpty: false,
     max: 100,
   },
-  inPerson: {
+  salePerson: {
     type: 'string',
     allowEmpty: false,
     max: 100,
   },
-  payCard: {
+  card: {
     type: 'string',
     allowEmpty: false,
     max: 100,
   },
-  payDate: 'dateTime',
-  payMoney: 'number',
+  date: 'dateTime',
+  money: 'number',
   status: 'int',
   goodsList: {
     type: 'array',

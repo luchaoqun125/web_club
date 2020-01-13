@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-16 15:39:03
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-10 11:26:45
+ * @LastEditTime : 2020-01-11 13:59:38
  */
 module.exports = app => {
   const { STRING, INTEGER } = app.Sequelize;
@@ -15,6 +15,9 @@ module.exports = app => {
   });
 
   Home.associate = () => {
+    Home.belongsTo(app.model.User, {
+      foreignKey: 'userId',
+    });
     Home.hasMany(app.model.HomeList, {
       foreignKey: 'homeId',
       as: 'children',

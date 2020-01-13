@@ -2,8 +2,8 @@
  * @Description: Helper 函数
  * @Author: 鲁大师
  * @Date: 2019-12-12 10:01:35
- * @LastEditors: 鲁大师
- * @LastEditTime: 2019-12-18 10:50:36
+ * @LastEditors  : 鲁大师
+ * @LastEditTime : 2020-01-11 14:22:42
  */
 
 // Helper 函数用来提供一些实用的 utility 函数。
@@ -30,19 +30,27 @@ exports.verifyToken = async (ctx, userId) => {
 };
 
 // 处理成功响应
-exports.success = (ctx, result = null, message = '请求成功', status = 200) => {
-  ctx.body = {
+exports.success = (ctx, data = null, message = '请求成功', status = 200) => {
+  ctx.status = status;
+  return {
     code: 1,
     message,
-    data: result,
+    data,
   };
-  ctx.status = status;
 };
+
+// code码定义
+const errorCode = {
+  10001: '暂无用户数据，请先注册账号',
+  10002: '用户名和密码错误',
+};
+
 // 处理失败响应
-exports.error = (ctx, code, message) => {
-  ctx.body = {
+exports.error = (ctx, data = null, message = '请求失败', code = 0, status = 200) => {
+  ctx.status = status;
+  return {
     code,
     message,
+    data,
   };
-  ctx.status = code;
 };

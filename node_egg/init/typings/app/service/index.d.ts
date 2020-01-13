@@ -5,6 +5,7 @@ import 'egg';
 import ExportHome from '../../../app/service/home';
 import ExportIncomingGoods from '../../../app/service/incomingGoods';
 import ExportSaleGoods from '../../../app/service/saleGoods';
+import ExportStockGoods from '../../../app/service/stockGoods';
 import ExportUser from '../../../app/service/user';
 
 declare module 'egg' {
@@ -12,6 +13,7 @@ declare module 'egg' {
     home: ExportHome;
     incomingGoods: ExportIncomingGoods;
     saleGoods: ExportSaleGoods;
+    stockGoods: ExportStockGoods;
     user: ExportUser;
   }
 }

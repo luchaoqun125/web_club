@@ -3,10 +3,10 @@
  * @Author: 鲁大师
  * @Date: 2019-12-29 15:36:48
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2019-12-29 15:43:59
+ * @LastEditTime : 2020-01-12 20:55:59
  */
 import { Controller } from 'egg';
-import { Post, TagsAll, Prefix, Description } from 'egg-shell-decorators';
+import { Post, TagsAll, Prefix, Description, Get } from 'egg-shell-decorators';
 
 @TagsAll('销售')
 @Prefix('/sale/goods')
@@ -15,6 +15,7 @@ export default class SaleGoodsController extends Controller {
 
   constructor(ctx) {
     super(ctx);
+    this.saleGoodsService = this.app.model.SaleGoods;
   }
 
   @Post('/create')
@@ -23,7 +24,7 @@ export default class SaleGoodsController extends Controller {
     return await this.saleGoodsService.create(body);
   }
 
-  @Post('/list')
+  @Get('/list')
   @Description('查询销售列表')
   async list({ body }) {
     return await this.saleGoodsService.list(body);

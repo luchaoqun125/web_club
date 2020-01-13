@@ -3,35 +3,35 @@
  * @Author: 鲁大师
  * @Date: 2019-12-16 18:53:56
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-09 20:51:44
+ * @LastEditTime : 2020-01-11 15:06:00
  */
 import { Controller } from 'egg';
-import { Post, TagsAll, Description, Prefix } from 'egg-shell-decorators';
+import { Post, Get, TagsAll, Description, Prefix } from 'egg-shell-decorators';
 import { createRule } from '../rule/incomingGoods';
 @TagsAll('入库')
 @Prefix('/incoming/goods')
 export default class IncomingGoodsController extends Controller {
   incomingGoodsService: any;
-  validate: any;
+  validator: any;
 
   constructor(ctx) {
     super(ctx);
     this.incomingGoodsService = this.ctx.service.incomingGoods;
-    this.validate = this.app.validator.validate;
+    this.validator = this.app.validator;
   }
 
   @Post('/create')
   @Description('创建入库')
   async create({ body }) {
     try {
-      this.validate(createRule, body);
+      this.validator.validate(createRule, body);
     } catch (error) {
-      return error;
+      return this.ctx.helper.error(this.ctx, error, '参数校验失败');
     }
     return await this.incomingGoodsService.create(body);
   }
 
-  @Post('/list')
+  @Get('/list')
   @Description('查询入库列表')
   async list({ body }) {
     return await this.incomingGoodsService.list(body);
