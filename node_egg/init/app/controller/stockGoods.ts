@@ -3,30 +3,25 @@
  * @Author: 鲁大师
  * @Date: 2019-12-29 16:54:15
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-07 17:19:34
+ * @LastEditTime : 2020-01-17 22:32:47
  */
 import { Controller } from 'egg';
-import { Post, TagsAll, Prefix, Description } from 'egg-shell-decorators';
+import { TagsAll, Prefix, Description, Get } from 'egg-shell-decorators';
 
 @TagsAll('库存')
 @Prefix('/stock/goods')
 export default class StockController extends Controller {
+  stockService: any;
 
   constructor(ctx) {
     super(ctx);
+    this.stockService = this.ctx.service.stockGoods;
   }
 
-  @Post('/list')
+  @Get('/list')
   @Description('库存列表')
   async list ({ body }) {
-    console.log(body);
-    return await {};
+    return await this.stockService.list(body);
   }
 
-  @Post('/update')
-  @Description('更改库存数量')
-  async update({ body }) {
-    console.log(body);
-    return await {};
-  }
 }

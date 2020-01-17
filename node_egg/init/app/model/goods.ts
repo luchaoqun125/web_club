@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2020-01-13 14:56:51
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-13 15:42:42
+ * @LastEditTime : 2020-01-14 18:34:31
  */
 export default app => {
   const { INTEGER, STRING } = app.Sequelize;
@@ -13,6 +13,8 @@ export default app => {
     name: STRING,
     // 类型
     type: INTEGER,
+    // 类型名称
+    typeStr: STRING,
   });
 
   return Goods;

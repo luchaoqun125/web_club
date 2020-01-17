@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-11 14:06:46
+ * @LastEditTime : 2020-01-14 17:39:10
  */
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg';
 import * as path from 'path';
@@ -67,7 +67,7 @@ export default (appInfo: EggAppInfo) => {
         enable: false,
       },
       // 跨域白名单
-      domainWhiteList: [ 'http://127.0.0.1:7001' ],
+      domainWhiteList: [ 'http://127.0.0.1:7002', 'http://localhost:7002' ],
     },
 
     // 允许跨域的方法

@@ -3,10 +3,10 @@
  * @Author: 鲁大师
  * @Date: 2020-01-08 20:04:16
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-11 16:48:37
+ * @LastEditTime : 2020-01-13 18:01:27
  */
 export const baseGoods = {
-  // goodsId: 'int',
+  goodsId: 'int',
   goodsName: {
     type: 'string',
     max: 100,

@@ -3,10 +3,11 @@
  * @Author: 鲁大师
  * @Date: 2020-01-13 14:46:13
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-13 15:35:25
+ * @LastEditTime : 2020-01-14 18:40:18
  */
 import { Controller } from 'egg';
 import { Post, Description, TagsAll, Prefix, Get } from 'egg-shell-decorators';
+import { goodsRule } from '../rule/goods';
 
 @TagsAll('销售')
 @Prefix('/goods')
@@ -19,6 +20,10 @@ class Goods extends Controller {
   @Post('/add')
   @Description('新增商品')
   async add({ body }) {
+    const error = this.app.validator.validate(goodsRule, body);
+    if (error) {
+      return this.ctx.helper.error(this.ctx, null, '参数异常');
+    }
     return this.ctx.service.goods.add(body);
   }
 

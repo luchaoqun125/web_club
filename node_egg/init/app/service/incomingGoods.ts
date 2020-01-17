@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-11 16:15:29
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-13 14:40:06
+ * @LastEditTime : 2020-01-15 17:42:58
  */
 import { Service } from 'egg';
 
@@ -24,7 +24,7 @@ export default class IncomingGoodsService extends Service {
     const { helper } = this.ctx;
     try {
       // 存储进货表
-      await this.incomingGoodsModel.create(params, {
+      const incomingData = await this.incomingGoodsModel.create(params, {
         include: [{
           model: this.incomingGoodsListModel,
           as: 'goodsList',
@@ -32,6 +32,7 @@ export default class IncomingGoodsService extends Service {
       });
 
       // 更新库存表
+      await this.ctx.service.stockGoods.add({ incomingGoodsId: incomingData.id, goodsList: params.goodsList });
     } catch (error) {
       return helper.error(this.ctx, error, '报存失败');
     }
@@ -46,10 +47,15 @@ export default class IncomingGoodsService extends Service {
 
     try {
       const result = await this.incomingGoodsModel.findAndCountAll({
-        include: { model: this.incomingGoodsListModel },
         where: query,
         limit,
         offset,
+        include: [
+          {
+            model: this.incomingGoodsListModel,
+            as: 'goodsList',
+          },
+        ],
       });
       return this.ctx.helper.success(this.ctx, result);
     } catch (error) {

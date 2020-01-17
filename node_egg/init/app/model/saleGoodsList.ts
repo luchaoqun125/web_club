@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2020-01-09 10:23:56
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-12 21:14:57
+ * @LastEditTime : 2020-01-13 17:58:33
  */
 export default app => {
   const { INTEGER, STRING, FLOAT } = app.Sequelize;
@@ -16,6 +16,8 @@ export default app => {
     incomingGoodsId: INTEGER,
     // 商品id
     goodsId: INTEGER,
+    // 商品名称
+    goodsName: STRING,
     // 销售仓库
     house: INTEGER,
     // 生产日期

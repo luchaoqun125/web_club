@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2020-01-13 14:50:36
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-13 16:57:39
+ * @LastEditTime : 2020-01-14 21:20:14
  */
 import { Service } from 'egg';
 
@@ -19,7 +19,15 @@ class GoodsService extends Service {
   async add(params) {
     const { helper } = this.ctx;
     try {
-      await this.goodsModel.bulkCreate(params);
+      const findGoods = await this.goodsModel.findAll({
+        where: params,
+      });
+
+      if (findGoods && findGoods.length !== 0) {
+        return helper.error(this.ctx, null, '该商品名称已存在');
+      }
+
+      await this.goodsModel.create(params);
       return helper.success(this.ctx);
     } catch (error) {
       return helper.error(this.ctx, error);
@@ -36,7 +44,6 @@ class GoodsService extends Service {
       });
       return helper.success(this.ctx);
     } catch (error) {
-      this.ctx.logger.info(error, '---');
       return helper.error(this.ctx, error);
     }
   }

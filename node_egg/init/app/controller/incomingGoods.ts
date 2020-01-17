@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-16 18:53:56
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-11 15:06:00
+ * @LastEditTime : 2020-01-15 17:38:50
  */
 import { Controller } from 'egg';
 import { Post, Get, TagsAll, Description, Prefix } from 'egg-shell-decorators';
@@ -33,8 +33,8 @@ export default class IncomingGoodsController extends Controller {
 
   @Get('/list')
   @Description('查询入库列表')
-  async list({ body }) {
-    return await this.incomingGoodsService.list(body);
+  async list() {
+    return await this.incomingGoodsService.list();
   }
 
   @Post('/update')

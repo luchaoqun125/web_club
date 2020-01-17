@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-29 15:43:50
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-12 20:46:28
+ * @LastEditTime : 2020-01-15 18:24:31
  */
 import { Service } from 'egg';
 
@@ -35,11 +35,25 @@ export default class SaleGoodsService extends Service {
 
   /**
    * 查询销售表格
-   * @param params Object
    */
-  async list(params) {
-    console.log(params);
-    return {};
+  async list() {
+    const { offset, limit, query } = this.ctx.state.pagination;
+    try {
+      const result = await this.saleGoodsModel.findAndCountAll({
+        where: query,
+        limit,
+        offset,
+        include: [
+          {
+            model: this.app.model.SaleGoodsList,
+            as: 'goodsList',
+          },
+        ],
+      });
+      return this.ctx.helper.success(this.ctx, result);
+    } catch (error) {
+      return this.ctx.helper.success(this.ctx, { rows: [], count: 0 });
+    }
   }
 
 }
