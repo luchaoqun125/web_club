@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2020-01-13 14:50:36
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-14 21:20:14
+ * @LastEditTime : 2020-01-19 16:05:05
  */
 import { Service } from 'egg';
 
@@ -60,6 +60,16 @@ class GoodsService extends Service {
 
     try {
       const result = await this.goodsModel.findAndCountAll(selectData);
+      return this.ctx.helper.success(this.ctx, result);
+    } catch (error) {
+      return this.ctx.helper.error(this.ctx);
+    }
+  }
+
+  // 获取所有列表
+  async all() {
+    try {
+      const result = await this.goodsModel.findAll();
       return this.ctx.helper.success(this.ctx, result);
     } catch (error) {
       return this.ctx.helper.error(this.ctx);

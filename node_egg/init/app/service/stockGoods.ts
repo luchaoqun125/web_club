@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2020-01-12 20:43:21
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-17 22:31:29
+ * @LastEditTime : 2020-01-20 22:34:04
  */
 import { Service } from 'egg';
 
@@ -15,16 +15,54 @@ class StockService extends Service {
     this.stockGoodsModel = this.app.model.StockGoods;
   }
 
+  updateItem(nowValue, updateValue) {
+    return {
+      ...nowValue,
+      num: nowValue.num + updateValue.num,
+      money: nowValue.money + updateValue.money,
+    };
+  }
+
+  subItem (nowValue, updateValue) {
+    return {
+      ...nowValue,
+      num: nowValue.num - updateValue.num,
+      money: nowValue.money - updateValue.num * nowValue.price,
+    };
+  }
+
+  // TODO: 减去库存
+  subStock(params) {
+    try {
+      const { goodsList } = params;
+      goodsList.map(item => {
+        this.stockGoodsModel.findOne({
+          where: { goodsId: item.goodsId },
+        }).then(project => {
+          project.update(this.subItem(project, item));
+        });
+      });
+    } catch (error) {
+      return this.ctx.helper.error(this.ctx);
+    }
+  }
+
   // TODO:增加库存
   async add(params) {
     try {
-      const { incomingGoodsId, goodsList } = params;
-      const values = goodsList.map(item => {
-        return { ...item, incomingGoodsId };
+      const { incomingGoodsId, house, goodsList } = params;
+      goodsList.map(item => {
+        const { goodsId } = item;
+        const newItem = { ...item, incomingGoodsId, house };
+        this.stockGoodsModel.findOrCreate({
+          where: { goodsId },
+          defaults: newItem,
+        }).spread((stock, create) => {
+          if (create === false) {
+            stock.update(this.updateItem(stock, newItem));
+          }
+        });
       });
-
-      await this.stockGoodsModel.bulkCreate(values);
-      return this.ctx.helper.success(this.ctx, null);
     } catch (error) {
       return this.ctx.helper.error(this.ctx, '');
     }
@@ -44,6 +82,16 @@ class StockService extends Service {
       return this.ctx.helper.success(this.ctx, list);
     } catch (error) {
       return this.ctx.helper.error(this.ctx, { rows: [], count: 0 });
+    }
+  }
+
+  // 获取所有列表
+  async all() {
+    try {
+      const list = await this.stockGoodsModel.findAll();
+      return this.ctx.helper.success(this.ctx, list);
+    } catch (error) {
+      return this.ctx.helper.error(this.ctx, null);
     }
   }
 

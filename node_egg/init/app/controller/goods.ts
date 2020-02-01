@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2020-01-13 14:46:13
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-14 18:40:18
+ * @LastEditTime : 2020-01-19 14:06:04
  */
 import { Controller } from 'egg';
 import { Post, Description, TagsAll, Prefix, Get } from 'egg-shell-decorators';
@@ -37,6 +37,12 @@ class Goods extends Controller {
   @Description('查询列表')
   async list() {
     return this.ctx.service.goods.list();
+  }
+
+  @Get('/all')
+  @Description('查询列表')
+  async all() {
+    return this.ctx.service.goods.all();
   }
 
 }

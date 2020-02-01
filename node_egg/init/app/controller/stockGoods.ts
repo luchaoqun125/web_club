@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-29 16:54:15
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-17 22:32:47
+ * @LastEditTime : 2020-01-19 14:02:23
  */
 import { Controller } from 'egg';
 import { TagsAll, Prefix, Description, Get } from 'egg-shell-decorators';
@@ -20,8 +20,14 @@ export default class StockController extends Controller {
 
   @Get('/list')
   @Description('库存列表')
-  async list ({ body }) {
-    return await this.stockService.list(body);
+  async list () {
+    return await this.stockService.list();
+  }
+
+  @Get('/all')
+  @Description('获取所有列表')
+  async all() {
+    return await this.stockService.all();
   }
 
 }

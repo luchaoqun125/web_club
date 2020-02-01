@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2020-01-08 20:04:07
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-11 15:01:57
+ * @LastEditTime : 2020-01-18 12:35:30
  */
 import { baseGoods } from './baseGoods';
 
@@ -26,6 +26,10 @@ export const createRule = {
   payDate: 'dateTime',
   payMoney: 'number',
   status: 'int',
+  house: {
+    type: 'string',
+    max: 100,
+  },
   goodsList: {
     type: 'array',
     itemType: 'object',

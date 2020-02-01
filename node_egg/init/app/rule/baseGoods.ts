@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2020-01-08 20:04:16
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-13 18:01:27
+ * @LastEditTime : 2020-01-19 13:54:26
  */
 export const baseGoods = {
   goodsId: 'int',
@@ -12,14 +12,23 @@ export const baseGoods = {
     max: 100,
   },
   house: {
-    type: 'int',
+    type: 'string',
     required: false,
     max: 100,
   },
-  dueDate: 'dateTime',
-  manufactureDate: 'dateTime',
+  dueDate: {
+    type: 'dateTime',
+    required: false,
+  },
+  manufactureDate: {
+    type: 'dateTime',
+    required: false,
+  },
   num: 'int',
-  type: 'int',
+  type: {
+    type: 'int',
+    required: false,
+  },
   price: {
     type: 'number',
     min: 0,

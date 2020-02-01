@@ -3,7 +3,7 @@
  * @Author: 鲁大师
  * @Date: 2019-12-29 15:43:50
  * @LastEditors  : 鲁大师
- * @LastEditTime : 2020-01-15 18:24:31
+ * @LastEditTime : 2020-01-19 17:03:41
  */
 import { Service } from 'egg';
 
@@ -21,12 +21,13 @@ export default class SaleGoodsService extends Service {
    */
   async create(params) {
     try {
-      await this.saleGoodsModel.create(params , {
+      const result = await this.saleGoodsModel.create(params , {
         include: [{
           model: this.app.model.SaleGoodsList,
           as: 'goodsList',
         }],
       });
+      await this.ctx.service.stockGoods.subStock(result);
       return this.ctx.helper.success(this.ctx);
     } catch (error) {
       return this.ctx.helper.error(this.ctx, error, '保存失败');
